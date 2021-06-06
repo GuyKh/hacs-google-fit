@@ -11,8 +11,8 @@ from homeassistant.helpers.event import track_time_change
 from homeassistant.util.dt import utc_from_timestamp
 
 REQUIREMENTS = [
-    'google-api-python-client==1.6.4',
-    'oauth2client==4.0.0',
+    'google-api-python-client==2.7.0',
+    'oauth2client==4.1.3',
     'httplib2'
 ]
 
@@ -102,7 +102,7 @@ def _get_client(token_file):
         credentials = oauth2file.Storage(token_file).get()
         http = credentials.authorize(httplib2.Http())
         service = google_discovery.build(
-            'fitness', API_VERSION, http=http, cache_discovery=False)
+            'fitness', API_VERSION, static_discovery=False, http=http, cache_discovery=False)
         return service
 
 
