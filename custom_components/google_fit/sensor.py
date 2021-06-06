@@ -102,7 +102,7 @@ def _get_client(token_file):
         credentials = oauth2file.Storage(token_file).get()
         http = credentials.authorize(httplib2.Http())
         service = google_discovery.build(
-            'fitness', API_VERSION, http=http, cache_discovery=False)
+            'fitness', API_VERSION, http=http, cache_discovery=False, static_discovery=False)
         return service
 
 
